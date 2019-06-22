@@ -10,20 +10,20 @@ https://pyqt5.com community is a blog site dedicated to PyQt5 learning and promo
 
 If you think something here is helpful, don't forget to help out.⭐️little stars⭐️
 
-[客户端下载](https://github.com/PyQt5/PyQtClient/releases)
+[Client Downloads](https://github.com/PyQt5/PyQtClient/releases)
 
-[自定义控件](https://github.com/PyQt5/CustomWidgets)
+[Custom control](https://github.com/PyQt5/CustomWidgets)
 
-## 目录
+## table of Contents
 
 - Layouts
   - [QVBoxLayout](QVBoxLayout)
   - [QHBoxLayout](QHBoxLayout)
   - [QGridLayout](QGridLayout)
-    - [腾讯视频热播列表](QGridLayout/HotPlaylist.py)
+    - [Tencent video hot list](QGridLayout/HotPlaylist.py)
   - [QFormLayout](QFormLayout)
   - [QFlowLayout](QFlowLayout)
-    - [腾讯视频热播列表](QFlowLayout/HotPlaylist.py)
+    - [Tencent video hot list](QFlowLayout/HotPlaylist.py)
 
 - Spacers
   - [Horizontal Spacer](QSpacerItem)
@@ -31,9 +31,9 @@ If you think something here is helpful, don't forget to help out.⭐️little st
 
 - Buttons
   - [QPushButton](QPushButton)
-    - [普通样式](QPushButton/NormalStyle.py)
-    - [按钮底部线条进度](QPushButton/BottomLineProgress.py)
-    - [按钮文字旋转进度](QPushButton/FontRotate.py)
+    - [Ordinary style](QPushButton/NormalStyle.py)
+    - [Display custom widgets and sort them](QPushButton/BottomLineProgress.py)
+    - [Custom role ordering](QPushButton/FontRotate.py)
   - [QToolButton](QToolButton)
   - [QRadioButton](QRadioButton)
   - [QCheckBox](QCheckBox)
