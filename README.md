@@ -1,14 +1,14 @@
-# 各种各样的PyQt测试和例子
+# Various PyQt tests and examples
 
 [![Blog](https://img.shields.io/badge/blog-pyqt5-green.svg)](https://pyqt5.com)
 
-https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站，分享大家平时学习中记录的笔记和例子，以及对遇到的问题进行收集整理。
+https://pyqt5.com community is a blog site dedicated to PyQt5 learning and promotion, sharing notes and examples recorded during your usual study, and collecting and collecting problems encountered.
 
 [![GitHub watchers](https://img.shields.io/github/watchers/PyQt5/PyQt.svg?style=social&label=Watch)](https://github.com/PyQt5/PyQt)
 [![GitHub stars](https://img.shields.io/github/stars/PyQt5/PyQt.svg?style=social)](https://github.com/PyQt5/PyQt)
 [![GitHub forks](https://img.shields.io/github/forks/PyQt5/PyQt.svg?style=social)](https://github.com/PyQt5/PyQt/fork)
 
-如果您觉得这里的东西对您有帮助，别忘了帮忙点一颗:star:小星星:star:
+If you think something here is helpful, don't forget to help out.⭐️little stars⭐️
 
 [客户端下载](https://github.com/PyQt5/PyQtClient/releases)
 
