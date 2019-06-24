@@ -77,6 +77,7 @@ class ImageSliderWidget(QWidget, Ui_Form):
 if __name__ == '__main__':
     import sys
     from PyQt5.QtWidgets import QApplication
+    os.chdir(os.path.dirname(__file__))
     app = QApplication(sys.argv)
     w = ImageSliderWidget()
     w.show()

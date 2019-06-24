@@ -18,6 +18,8 @@ from sqlalchemy.sql.expression import and_
 from sqlalchemy.sql.schema import Column
 from sqlalchemy.sql.sqltypes import Integer, Text
 from Lib.mainui import Ui_Form
+import os
+os.chdir(os.path.dirname(__file__))
 
 __Author__ = """By: Irony
 QQ: 892768447
@@ -51,9 +53,9 @@ class Window(QWidget, Ui_Form):
     def __init__(self, *args, **kwargs):
         super(Window, self).__init__(*args, **kwargs)
         self.setupUi(self)
-        # sql的拼接字段
+        # Splicing field of sql
         self.sql = {}
-        # 数据库连接
+        # Database linkage
         self.session = sessionmaker(bind=engine)()
 
     @pyqtSlot()
@@ -64,19 +66,19 @@ class Window(QWidget, Ui_Form):
         self.applyLicense()
         self.applyPort()
         if not self.sql:
-            return QMessageBox.warning(self, '提示', '没有进行任何输入')
-        # 清空数据
+            return QMessageBox.warning(self, 'Prompt', 'No input is made')
+        # Clear data
         self.tableWidget.clear()
-        # 重新设置表头
+        # Reset the header
         self.tableWidget.setHorizontalHeaderLabels(
-            ['编号', '姓名', '证件号', '航班号', '航班日期', '座位号', '登机口', '序号', '出发地', '目的地'])
-        # 根据选择的字段进行并列查询
+            ['number', 'name', 'document number', 'flight number', 'flight date', 'seat number', 'departure', 'serial number', 'departure place', 'destination'])
+        # Parallel query based on selected fields
         rets = self.session.query(Tourist).filter(
             and_(*(key == value for key, value in self.sql.items()))).all()
         if not rets:
-            return QMessageBox.information(self, '提示', '未查询到结果')
+            return QMessageBox.information(self, 'Prompt', 'Not found results')
         self.tableWidget.setRowCount(len(rets))
-        # 根据查询结果添加到表格中
+        # Add to the table based on the results of the query
         for row, tourist in enumerate(rets):
             self.tableWidget.setItem(row, 0, QTableWidgetItem(str(tourist.id)))
             self.tableWidget.setItem(
@@ -98,42 +100,42 @@ class Window(QWidget, Ui_Form):
                 row, 9, QTableWidgetItem(str(tourist.destinationstation)))
 
     def applyName(self):
-        """姓名"""
+        """Name"""
         if not self.checkBoxName.isChecked():
             if Tourist.name in self.sql:
-                # 移除
+                # Remove
                 self.sql.pop(Tourist.name)
-        # 更新或添加到字典里
+        # Update or add to the dictionary
         else:
             self.sql[Tourist.name] = self.lineEditName.text().strip()
 
     def applySeat(self):
-        """座位号"""
+        """seat number"""
         if not self.checkBoxSeat.isChecked():
             if Tourist.seatnumber in self.sql:
-                # 移除
+                # Remove
                 self.sql.pop(Tourist.seatnumber)
-        # 更新或添加到字典里
+        # Update or add to the dictionary
         else:
             self.sql[Tourist.seatnumber] = self.lineEditSeat.text().strip()
 
     def applyLicense(self):
-        """证件号"""
+        """license number"""
         if not self.checkBoxLicense.isChecked():
             if Tourist.license in self.sql:
-                # 移除
+                # Remove
                 self.sql.pop(Tourist.license)
-        # 更新或添加到字典里
+        # Update or add to the dictionary
         else:
             self.sql[Tourist.license] = self.lineEditLicense.text().strip()
 
     def applyPort(self):
-        """登机口"""
+        """Boarding port"""
         if not self.checkBoxPort.isChecked():
             if Tourist.boardingport in self.sql:
-                # 移除
+                # Remove
                 self.sql.pop(Tourist.boardingport)
-        # 更新或添加到字典里
+        # Update or add to the dictionary
         else:
             self.sql[Tourist.boardingport] = self.lineEditPort.text().strip()
 
