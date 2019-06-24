@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2018年11月24日
+Created on November 24, 2018
 author: Irony
 site: https://pyqt5.com , https://github.com/892768447
 email: 892768447@qq.com
 file:
-description: 参考 http://qt.shoutwiki.com/wiki/Extending_QStackedWidget_for_sliding_page_animations_in_Qt
+description: reference http://qt.shoutwiki.com/wiki/Extending_QStackedWidget_for_sliding_page_animations_in_Qt
 """
 from PyQt5.QtCore import Qt, pyqtProperty, QEasingCurve, QPoint, \
     QPropertyAnimation, QParallelAnimationGroup, QTimer
@@ -28,21 +28,21 @@ class SlidingStackedWidget(QStackedWidget):
     def __init__(self, *args, **kwargs):
         super(SlidingStackedWidget, self).__init__(*args, **kwargs)
         self._pnow = QPoint(0, 0)
-        # 动画速度
+        # Animation speed
         self._speed = 500
-        # 当前索引
+        # Current index
         self._now = 0
-        # 自动模式的当前索引
+        # Current index of automatic mode
         self._current = 0
-        # 下一个索引
+        # Next index
         self._next = 0
-        # 是否激活
+        # Activate now
         self._active = 0
-        # 动画方向(默认是横向)
+        # Animation direction (default is landscape)
         self._orientation = Qt.Horizontal
-        # 动画曲线类型
+        # Animation curve type
         self._easing = QEasingCurve.Linear
-        # 初始化动画
+        # Initialize animation
         self._initAnimation()
 
     def setSpeed(self, speed=500):
@@ -58,7 +58,7 @@ class SlidingStackedWidget(QStackedWidget):
 
     def setOrientation(self, orientation=Qt.Horizontal):
         """Set the direction of the animation (horizontal and vertical)
-        :param orientation:    方向(Qt.Horizontal或Qt.Vertical)
+        :param orientation:    direction (Qt.Horizontal or Qt.Vertical)
         :type orientation:     http://doc.qt.io/qt-5/qt.html#Orientation-enum
         """
         self._orientation = orientation
@@ -69,7 +69,7 @@ class SlidingStackedWidget(QStackedWidget):
 
     def setEasing(self, easing=QEasingCurve.OutBack):
         """Set the type of curve for the animation
-        :param easing:    默认为QEasingCurve.OutBack
+        :param easing:    The default is QEasingCurve.OutBack
         :type easing:     http://doc.qt.io/qt-5/qeasingcurve.html#Type-enum
         """
         self._easing = easing
@@ -108,10 +108,10 @@ class SlidingStackedWidget(QStackedWidget):
         self.slideInWgt(self.widget(idx), direction)
 
     def slideInWgt(self, widget, direction):
-        """滑动到指定的widget
+        """Slide to the specified widget
         :param widget:        QWidget, QLabel, etc...
         :type widget:         QWidget Base Class
-        :param direction:     方向
+        :param direction:     direction
         :type direction:      int
         """
         if self._active:
@@ -150,12 +150,12 @@ class SlidingStackedWidget(QStackedWidget):
         elif direction == self.LEFT2RIGHT:
             offsetY = 0
 
-        # 重新定位显示区域外部/旁边的下一个窗口小部件
+        # Relocate the next widget outside/beside the display area
         pnext = w_next.pos()
         pnow = w_now.pos()
         self._pnow = pnow
 
-        # 移动到指定位置并显示
+        # Move to the specified location and display
         w_next.move(pnext.x() - offsetX, pnext.y() - offsetY)
         w_next.show()
         w_next.raise_()
@@ -180,36 +180,36 @@ class SlidingStackedWidget(QStackedWidget):
         self._animgroup.start()
 
     def _initAnimation(self):
-        """初始化当前页和下一页的动画变量"""
-        # 当前页的动画
+        """Initialize the animation variables of the current page and the next page"""
+        # Current page animation
         self._animnow = QPropertyAnimation(
             self, propertyName=b'pos', duration=self._speed,
             easingCurve=self._easing)
-        # 下一页的动画
+        # Next page animation
         self._animnext = QPropertyAnimation(
             self, propertyName=b'pos', duration=self._speed,
             easingCurve=self._easing)
-        # 并行动画组
+        # Parallel animation group
         self._animgroup = QParallelAnimationGroup(
             self, finished=self.animationDoneSlot)
         self._animgroup.addAnimation(self._animnow)
         self._animgroup.addAnimation(self._animnext)
 
     def setCurrentIndex(self, index):
-        # 覆盖该方法实现的动画切换
+        # Override the animation switch implemented by this method
         # super(SlidingStackedWidget, self).setCurrentIndex(index)
-        # 坚决不能调用上面的函数,否则动画失效
+        # Resolutely can't call the above function, otherwise the animation will fail.
         self.slideInIdx(index)
 
     def setCurrentWidget(self, widget):
-        # 覆盖该方法实现的动画切换
+        # Override the animation switch implemented by this method
         super(SlidingStackedWidget, self).setCurrentWidget(widget)
-        # 坚决不能调用上面的函数,否则动画失效
+        # Resolutely can't call the above function, otherwise the animation will fail.
         self.setCurrentIndex(self.indexOf(widget))
 
     def animationDoneSlot(self):
-        """动画结束处理函数"""
-        # 由于重写了setCurrentIndex方法所以这里要用父类本身的方法
+        """Animation end processing function"""
+        # Since the setCurrentIndex method is rewritten, the method of the parent class itself is used here.
 #         self.setCurrentIndex(self._next)
         QStackedWidget.setCurrentIndex(self, self._next)
         w = self.widget(self._now)
@@ -218,13 +218,13 @@ class SlidingStackedWidget(QStackedWidget):
         self._active = 0
 
     def autoStop(self):
-        """停止自动播放"""
+        """Stop autoplay"""
         if hasattr(self, '_autoTimer'):
             self._autoTimer.stop()
 
     def autoStart(self, msec=3000):
-        """自动轮播
-        :param time: 时间, 默认3000, 3秒
+        """Automatic carousel
+        :Param time: time, default 3000, 3 seconds
         """
         if not hasattr(self, '_autoTimer'):
             self._autoTimer = QTimer(self, timeout=self._autoStart)

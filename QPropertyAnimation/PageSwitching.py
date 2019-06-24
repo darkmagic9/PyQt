@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2018年11月24日
+Created on November 24, 2018
 author: Irony
 site: https://pyqt5.com , https://github.com/892768447
 email: 892768447@qq.com
@@ -30,14 +30,14 @@ class ImageSliderWidget(QWidget, Ui_Form):
     def __init__(self, *args, **kwargs):
         super(ImageSliderWidget, self).__init__(*args, **kwargs)
         self.setupUi(self)
-        # 初始化动画曲线类型
+        # Initialize the animation curve type
         curve_types = [(n, c) for n, c in QEasingCurve.__dict__.items()
                        if isinstance(c, QEasingCurve.Type)]
         curve_types.sort(key=lambda ct: ct[1])
         curve_types = [c[0] for c in curve_types]
         self.comboBoxEasing.addItems(curve_types)
 
-        # 绑定信号槽
+        # Binding signal slot
         self.spinBoxSpeed.valueChanged.connect(self.stackedWidget.setSpeed)
         self.comboBoxEasing.currentTextChanged.connect(self.setEasing)
         self.radioButtonHor.toggled.connect(self.setOrientation)
@@ -47,7 +47,7 @@ class ImageSliderWidget(QWidget, Ui_Form):
         self.pushButtonStart.clicked.connect(self.autoStart)
         self.pushButtonStop.clicked.connect(self.autoStop)
 
-        # 添加图片页面
+        # Add image page
         for name in os.listdir('Data/Images'):
             label = QLabel(self.stackedWidget)
             label.setScaledContents(True)
