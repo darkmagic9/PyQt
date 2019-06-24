@@ -48,10 +48,10 @@ class ImageSliderWidget(QWidget, Ui_Form):
         self.pushButtonStop.clicked.connect(self.autoStop)
 
         # Add image page
-        for name in os.listdir('Data/Images'):
+        for name in os.listdir('Data/topics'):
             label = QLabel(self.stackedWidget)
             label.setScaledContents(True)
-            label.setPixmap(QPixmap('Data/Images/' + name))
+            label.setPixmap(QPixmap('Data/topics/' + name))
             self.stackedWidget.addWidget(label)
 
     def autoStart(self):
