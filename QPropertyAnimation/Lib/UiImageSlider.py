@@ -76,18 +76,18 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "图片轮播动画"))
-        self.groupBox.setTitle(_translate("Form", "动画速度"))
-        self.groupBox_2.setTitle(_translate("Form", "动画方向(默认是横向)"))
-        self.radioButtonHor.setText(_translate("Form", "横向"))
-        self.radioButtonVer.setText(_translate("Form", "纵向"))
-        self.groupBox_3.setTitle(_translate("Form", "动画曲线类型"))
-        self.groupBox_4.setTitle(_translate("Form", "翻页"))
-        self.pushButtonPrev.setText(_translate("Form", "上一页"))
-        self.pushButtonNext.setText(_translate("Form", "下一页"))
-        self.groupBox_5.setTitle(_translate("Form", "轮播"))
-        self.pushButtonStart.setText(_translate("Form", "轮播开始"))
-        self.pushButtonStop.setText(_translate("Form", "轮播停止"))
+        Form.setWindowTitle(_translate("Form", "Picture carousel animation"))
+        self.groupBox.setTitle(_translate("Form", "Animation speed"))
+        self.groupBox_2.setTitle(_translate("Form", "Animation direction (default is landscape)"))
+        self.radioButtonHor.setText(_translate("Form", "Landscape"))
+        self.radioButtonVer.setText(_translate("Form", "Portrait"))
+        self.groupBox_3.setTitle(_translate("Form", "Animation curve type"))
+        self.groupBox_4.setTitle(_translate("Form", "Page turning"))
+        self.pushButtonPrev.setText(_translate("Form", "Previous page"))
+        self.pushButtonNext.setText(_translate("Form", "Next page"))
+        self.groupBox_5.setTitle(_translate("Form", "Carousel"))
+        self.pushButtonStart.setText(_translate("Form", "Carousel begins"))
+        self.pushButtonStop.setText(_translate("Form", "Carousel stop"))
 
 from Lib.SlidingStackedWidget import SlidingStackedWidget
 
