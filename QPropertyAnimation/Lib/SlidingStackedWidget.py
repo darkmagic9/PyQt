@@ -46,8 +46,8 @@ class SlidingStackedWidget(QStackedWidget):
         self._initAnimation()
 
     def setSpeed(self, speed=500):
-        """设置动画速度
-        :param speed:       速度值,默认值为500
+        """Set animation speed
+        :param speed:       Speed value, default value 500
         :type speed:        int
         """
         self._speed = speed
@@ -57,7 +57,7 @@ class SlidingStackedWidget(QStackedWidget):
         return self._speed
 
     def setOrientation(self, orientation=Qt.Horizontal):
-        """设置动画的方向(横向和纵向)
+        """Set the direction of the animation (horizontal and vertical)
         :param orientation:    方向(Qt.Horizontal或Qt.Vertical)
         :type orientation:     http://doc.qt.io/qt-5/qt.html#Orientation-enum
         """
@@ -68,7 +68,7 @@ class SlidingStackedWidget(QStackedWidget):
         return self._orientation
 
     def setEasing(self, easing=QEasingCurve.OutBack):
-        """设置动画的曲线类型
+        """Set the type of curve for the animation
         :param easing:    默认为QEasingCurve.OutBack
         :type easing:     http://doc.qt.io/qt-5/qeasingcurve.html#Type-enum
         """
@@ -79,24 +79,24 @@ class SlidingStackedWidget(QStackedWidget):
         return self._easing
 
     def slideInNext(self):
-        """滑动到下一页"""
+        """Swipe to the next page"""
         now = self.currentIndex()
         if now < self.count() - 1:
             self.slideInIdx(now + 1)
             self._current = now + 1
 
     def slideInPrev(self):
-        """滑动到上一页"""
+        """Swipe to the previous page"""
         now = self.currentIndex()
         if now > 0:
             self.slideInIdx(now - 1)
             self._current = now - 1
 
     def slideInIdx(self, idx, direction=4):
-        """滑动到指定序号
-        :param idx:               序号
+        """Slide to the specified serial number
+        :param idx:               Serial number
         :type idx:                int
-        :param direction:         方向,默认是自动AUTOMATIC=4
+        :param direction:         Direction, the default is automatic AUTOMATIC=4
         :type direction:          int
         """
         if idx > self.count() - 1:
